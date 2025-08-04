@@ -4,13 +4,29 @@ struct NavigationStack_Demo: View {
     var body: some View {
         NavigationStack {
             List {
-                NavigationLink(value: "Detail") {
-                    Text("Show Detail")
+                NavigationLink(value: 01) {
+                    Text("001")
+                        .bold()
+                    
+                }
+                NavigationLink(value: 02) {
+                    Text("002")
+                        .bold()
                 }
             }
             .navigationTitle("Actions")
-            .navigationDestination(for: String.self) { value in
-                Text("Detail View")
+            .navigationDestination(for: Int.self) { value in
+                
+                switch value {
+                case 1 :
+                    Image(systemName: "star")
+                case 2 :
+                    Image(systemName: "heart")
+                default :
+                    EmptyView()
+                    
+                }
+                Text("No.\(value)")
             }
         }
     }
@@ -22,22 +38,23 @@ struct NavigationStack_Demo: View {
 
 /// Navigation Path
 struct NavigationStack_Demo2: View {
-    @State private var path: [String] = []
+    @State private var path: [Int] = []
 
     var body: some View {
         NavigationStack(path: $path) {
             List {
-                NavigationLink(value: "Detail") {
-                    Text("Show Detail")
+                NavigationLink(value: 1) {
+                    Text("Show Detail 1")
                 }
+                
             }
             .navigationTitle("Actions")
-            .navigationDestination(for: String.self) { value in
+            .navigationDestination(for: Int.self) { value in
                 VStack {
                     Text("Detail View")
 
                     Button("Push") {
-                        path.append("Detail")
+                        path.append(1)
                     }
 
                     if path.count >= 3 {

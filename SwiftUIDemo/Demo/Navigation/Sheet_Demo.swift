@@ -16,6 +16,7 @@ struct Sheet_Demo: View {
             Text("Detail")
                 .presentationDetents([.medium, .fraction(0.33)])
                 .presentationDragIndicator(.visible)
+                
         }
     }
 }

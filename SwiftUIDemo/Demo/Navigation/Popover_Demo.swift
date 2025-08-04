@@ -2,7 +2,8 @@ import SwiftUI
 
 struct Popover_Demo: View {
     @State private var isShowing = false
-
+    @State private var isShowingCover = false
+    
     var body: some View {
         /// Refer to the examples in ``VStack_Demo``
         VStack {
@@ -10,6 +11,11 @@ struct Popover_Demo: View {
                 isShowing = true
             } label: {
                 Text("Show Popover")
+            }
+            Button {
+                isShowingCover = true
+            } label: {
+                Text("Show Cover")
             }
         }
         .popover(
@@ -23,6 +29,7 @@ struct Popover_Demo: View {
         }
     }
 }
+        
 
 #Preview {
     Popover_Demo()
