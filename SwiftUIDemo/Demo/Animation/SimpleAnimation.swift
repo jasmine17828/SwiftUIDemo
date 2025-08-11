@@ -8,13 +8,13 @@ struct SimpleAnimation: View {
             .foregroundStyle(.blue)
             .frame(width: flag ? 100 : 50, height: 50)
             .onTapGesture {
-                withAnimation {
+                withAnimation() {
                     flag.toggle()
                 } completion: {
                     isPresented.toggle()
                 }
             }
-
+        
         Text("Done")
             .opacity(isPresented ? 1 : 0)
     }
